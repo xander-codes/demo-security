@@ -40,10 +40,10 @@ public class UserController {
     }
 
     @PostMapping("/record")
-    public ResponseEntity<ApplicationUser> signUp(@RequestBody ApplicationUser user) {
+    public String signUp(@RequestBody ApplicationUser user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         ApplicationUser user1 = applicationUserRepository.save(user);
-        return ResponseEntity.ok(user1);
+        return "user created";
     }
 
     @GetMapping("/greet")
