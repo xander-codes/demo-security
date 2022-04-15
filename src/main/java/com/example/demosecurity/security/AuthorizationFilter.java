@@ -1,4 +1,4 @@
-package com.example.demosecurity;
+package com.example.demosecurity.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static com.example.demosecurity.SecurityConstants.HEADER_NAME;
-import static com.example.demosecurity.SecurityConstants.KEY;
+import static com.example.demosecurity.security.SecurityConstants.HEADER_NAME;
+import static com.example.demosecurity.security.SecurityConstants.KEY;
 
 
 public class AuthorizationFilter extends BasicAuthenticationFilter {
@@ -45,8 +45,12 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
     private UsernamePasswordAuthenticationToken authenticate(HttpServletRequest request) {
         String token = request.getHeader(HEADER_NAME);
         if (token != null) {
-            Claims user = Jwts.parser()
+            Claims user = Jwts
+                    .parserBuilder()
                     .setSigningKey(Keys.hmacShaKeyFor(KEY.getBytes()))
+                    .build()
+//                    .parser()
+//                    .setSigningKey(Keys.hmacShaKeyFor(KEY.getBytes()))
                     .parseClaimsJws(token)
                     .getBody();
 

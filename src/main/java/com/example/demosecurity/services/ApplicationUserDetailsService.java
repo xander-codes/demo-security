@@ -1,5 +1,7 @@
-package com.example.demosecurity;
+package com.example.demosecurity.services;
 
+import com.example.demosecurity.repositories.ApplicationUserRepository;
+import com.example.demosecurity.entities.ApplicationUser;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,4 +26,5 @@ public class ApplicationUserDetailsService implements UserDetailsService {
         }
         return new User(applicationUser.getUsername(), applicationUser.getPassword(), emptyList());
     }
+
 }

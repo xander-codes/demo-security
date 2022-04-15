@@ -6,7 +6,7 @@
    "username": "asd",  
    "password": "123"  
    }  
-to create an user in db 
+to create a user in db 
 
 
  - POST http://localhost:8080/login with  

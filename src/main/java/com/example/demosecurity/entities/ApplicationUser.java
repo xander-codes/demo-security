@@ -1,4 +1,4 @@
-package com.example.demosecurity;
+package com.example.demosecurity.entities;
 
 
 import javax.persistence.Entity;
@@ -9,7 +9,7 @@ import javax.persistence.Id;
 @Entity
 public class ApplicationUser {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String username;
     private String password;
